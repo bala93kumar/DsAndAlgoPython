@@ -1,0 +1,24 @@
+print("kriti")
+
+
+
+def reverse(nums):
+    strt_indx  =  0
+    end_indx  = len(nums) - 1
+
+    while  end_indx > strt_indx:
+        nums[strt_indx] , nums[end_indx]  =  nums[end_indx] , nums[strt_indx]
+        strt_indx += 1
+        end_indx -=1
+
+
+    return  nums
+
+if __name__  == "__main__":
+
+    arr_1  = [1,2,3,4]
+
+    arr_2 = reverse(arr_1)
+
+    print(arr_2)
+
