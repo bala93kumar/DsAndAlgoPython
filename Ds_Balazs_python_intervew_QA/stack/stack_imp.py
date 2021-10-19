@@ -38,17 +38,13 @@ class Stack:
     def pop(self):
 
 
+        if self.first is None :
+            print("stack is empty")
+        else :
+            poppedNode = self.first.data
+            self.first = self.first.next
 
-
-        poppedNode  =  self.first.data
-        self.first = self.first.next
-
-        self.size -= 1
-
-
-
-
-
+            self.size -= 1
 
 
 
@@ -64,21 +60,26 @@ class Stack:
 
 if __name__ == '__main__':
 
+
     stack_1 = Stack()
 
     print(stack_1.__dict__)
 
+    stack_1.pop()
+
     stack_1.push(10)
     stack_1.push(11)
-    # stack_1.push(12)
-    # print(stack_1.size)
-    #
-    # # print(stack_1.last.data)
-    #
-    # stack_1.pop()
-    # print(stack_1.size)
-    #
-    # stack_1.printValues()
+
+
+    stack_1.push(12)
+    print(stack_1.size)
+
+    # print(stack_1.last.data)
+
+    stack_1.pop()
+    print(stack_1.size)
+
+    stack_1.printValues()
 
 
 
