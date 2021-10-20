@@ -73,9 +73,6 @@ class SinglyLinkedList:
         else:
             self.tail.next = new_node
 
-
-        self.tail =  new_node
-
         return
 
     def print_obj_values(self):
