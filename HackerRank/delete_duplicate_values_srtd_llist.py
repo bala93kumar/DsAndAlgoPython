@@ -32,46 +32,45 @@ class List :
 
         while current_node is not None:
 
-            print(current_node.data)
+            print(current_node.data, end="-->")
 
             current_node = current_node.next
 
         return
 
-    def print_from_tail(self,head,position_from_tail):
-        psr1 = head
-        psr2 = head
+    def delete_duplicates(self):
+
+        temp = self.head
+
+        while temp.next is not None:
+            if temp.data == temp.next.data:
+                temp.next = temp.next.next
+                temp = temp.next
+            else :
+                temp = temp.next
+
+        return
 
 
 
-        for i in range(position_from_tail):
-            psr1 =  psr1.next
-
-        while psr1.next is not None :
-            psr2 =  psr2.next
-            psr1  = psr1.next
-
-        return psr2.data
-
-
-
-
-if __name__ == "__main__":
+if __name__  ==  '__main__':
 
     list1 = List()
 
     list1.insertLast(10)
-    list1.insertLast(11)
+    list1.insertLast(10)
     list1.insertLast(12)
     list1.insertLast(13)
-    list1.insertLast(14)
+    list1.insertLast(13)
     list1.insertLast(15)
     list1.insertLast(16)
 
     list1.print_obj_values()
 
-    # 10->11-> 12-> 13-> 14-> 15->
+    print('\n')
 
-    print("The the value at the position is  {}".format( list1.print_from_tail(list1.head, 2)))
+    list1.delete_duplicates()
+
+    list1.print_obj_values()
 
 
