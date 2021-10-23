@@ -55,6 +55,18 @@ def find(root, value):
                 root = root.right
                 find(root, value)
 
+def find_new(root, value):
+    if root :
+        if root.data == value:
+            return True
+        elif value < root.data :
+            return find_new(root.left ,value)
+        elif value > root.data:
+            return find_new(root.right,value)
+    else :
+        return False
+
+
 
 
 
@@ -90,6 +102,31 @@ class BST:
                             currentNode = currentNode.right
 
 
+    def recursive_insert(self, data):
+
+        if self.root is None :
+            self.root = Node(data)
+            return
+        if self.root.data == data:
+            return
+        if data > self.root.data:
+            if self.root.right:
+                self.root.right.recursive_insert(data)
+            else:
+                self.root.right = Node(data)
+        elif data < self.root.data:
+            if self.root.left:
+                self.root.left.recursive_insert(data)
+            else:
+                self.root.left = Node(data)
+
+
+
+
+
+
+
+
 
 
 
@@ -111,5 +148,15 @@ if __name__ == '__main__':
     postorder(bst1.root)
     print('\n')
     print(find(bst1.root,17))
+    print('\n')
+    print(find_new(bst1.root, 5))
+
+    bst2 = BST()
+
+    bst2.recursive_insert(10)
+    bst2.recursive_insert(5)
+    bst2.recursive_insert(13)
+
+    inorder(bst2.root)
 
 
