@@ -43,7 +43,6 @@ class List :
         psr2 = head
 
 
-
         for i in range(position_from_tail):
             psr1 =  psr1.next
 
@@ -65,6 +64,7 @@ class List :
                 visited.add(id(f))
                 f = f.next
         return 0
+
 
 
 

@@ -65,3 +65,4 @@ def has_cycle(head):
 
 
 if __name__ == '__main__':
+    pass

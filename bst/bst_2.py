@@ -3,7 +3,7 @@ class Node:
 
     def __init__(self,element):
         self.element = element
-        self.right =None
+        self.right = None
         self.left = None
 
 
@@ -13,6 +13,8 @@ class bst :
 
     def __init__(self,element):
         self.root = element
+
+    def makeTree(self,e):
 
 
 if __name__ == '__main__':

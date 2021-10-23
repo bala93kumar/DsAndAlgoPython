@@ -4,6 +4,59 @@ class Node :
         self.left = None
         self.right = None
 
+def inorder(root):
+
+    if  root is None:
+        return None
+
+    if  root:
+        inorder(root.left)
+        print(root.data, end=' ')
+        inorder(root.right)
+
+
+def preorder(root):
+
+    if root is None:
+        return None
+
+    if root:
+        print(root.data, end=' ')
+        preorder(root.left)
+        preorder(root.right)
+
+def postorder(root):
+
+    if root is None:
+        return
+
+    if root:
+        postorder(root.left)
+        postorder(root.right)
+        print(root.data,end=' ')
+
+
+def find(root, value):
+
+    if root is None:
+        print('No values found')
+        return
+
+    if root.data == value:
+        print(root.data)
+        return
+    else :
+         if value < root.data:
+             root = root.left
+             find(root, value)
+         else :
+             if value > root.data:
+
+                root = root.right
+                find(root, value)
+
+
+
 
 class BST:
     def __init__(self):
@@ -38,6 +91,8 @@ class BST:
 
 
 
+
+
 if __name__ == '__main__':
 
 
@@ -48,6 +103,13 @@ if __name__ == '__main__':
     bst1.insert(11)
     bst1.insert(2)
     bst1.insert(2)
-    print(bst1.root.__dict__)
+
+    inorder(bst1.root)
+    print('\n')
+    preorder(bst1.root)
+    print('\n')
+    postorder(bst1.root)
+    print('\n')
+    print(find(bst1.root,17))
 
 
