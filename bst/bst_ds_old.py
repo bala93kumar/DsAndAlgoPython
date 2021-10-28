@@ -68,8 +68,7 @@ def find_new(root, value):
 
 
 
-
-
+    
 class BST:
     def __init__(self):
         self.root = None
@@ -119,12 +118,6 @@ class BST:
                 self.root.left.recursive_insert(data)
             else:
                 self.root.left = Node(data)
-
-
-
-
-
-
 
 
 

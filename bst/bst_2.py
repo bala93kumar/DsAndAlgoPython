@@ -14,8 +14,6 @@ class bst :
     def __init__(self,element):
         self.root = element
 
-    def makeTree(self,e):
-
 
 if __name__ == '__main__':
     pass
