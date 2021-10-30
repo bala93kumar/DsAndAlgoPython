@@ -1,5 +1,19 @@
-
 from collections import deque
+
+
+def height(root):
+
+
+    if root:
+        x = height(root.left)
+        y = height(root.right)
+
+        if x > y:
+            return x + 1
+        else:
+            return y + 1
+
+    return 0
 
 def inorder(root):
 
@@ -10,6 +24,29 @@ def inorder(root):
         inorder(root.left)
         print(root.element, end=' ')
         inorder(root.right)
+
+
+def count_ite(root):
+
+    if root is None:
+        return None
+
+    q = deque()
+    q.append(root)
+    count = 0
+
+    while len(q) > 0:
+        t = q.popleft()
+
+        if t.right is not None and t.left is not None:
+            count = count + 1
+
+        if t.right is not None:
+            q.append(t.right)
+
+        if t.left is not None:
+            q.append(t.left)
+    return count
 
 def isempty(queue):
 
@@ -28,14 +65,16 @@ def levelOrder(root):
     q.append(root)
     # result = isempty(q)
 
-    while q:
-        print('in while')
+    # print(len(q))
+
+    while len(q) > 0:
         t = q.popleft()
+        print(t.element)
         if t.left:
-            print(t.left.element)
+            # print(t.left.element)
             q.append(t.left)
         if t.right:
-            print(t.right.element)
+            # print(t.right.element)
             q.append(t.right)
 
 
@@ -99,3 +138,7 @@ if __name__ == '__main__':
 
     print('\n')
     levelOrder(bst1.root)
+
+    print(count_ite(bst1.root))
+
+    print(height(bst1.root) - 1)
