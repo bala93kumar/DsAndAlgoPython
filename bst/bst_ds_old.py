@@ -4,6 +4,21 @@ class Node :
         self.left = None
         self.right = None
 
+
+def height(root):
+
+    if root is None:
+        return 0
+
+    if root.left is None and root.right is None:
+       return 0
+    elif root.left is not None and root.right is None:
+        return 1 + height(root.left)
+    elif root.right is not None and root.left is  None:
+        return 1 + height(root.right)
+    else :
+        return 1 + max(height(root.left), height(root.right))
+
 def inorder(root):
 
     if  root is None:
@@ -100,24 +115,25 @@ class BST:
                         else :
                             currentNode = currentNode.right
 
+    #following recursive insert failed
 
-    def recursive_insert(self, data):
-
-        if self.root is None :
-            self.root = Node(data)
-            return
-        if self.root.data == data:
-            return
-        if data > self.root.data:
-            if self.root.right:
-                self.root.right.recursive_insert(data)
-            else:
-                self.root.right = Node(data)
-        elif data < self.root.data:
-            if self.root.left:
-                self.root.left.recursive_insert(data)
-            else:
-                self.root.left = Node(data)
+    # def recursive_insert(self, data):
+    #
+    #     if self.root is None :
+    #         self.root = Node(data)
+    #         return
+    #     if self.root.data == data:
+    #         return
+    #     if data > self.root.data:
+    #         if self.root.right:
+    #             self.root.right.recursive_insert(data)
+    #         else:
+    #             self.root.right = Node(data)
+    #     elif data < self.root.data:
+    #         if self.root.left:
+    #             self.root.left.recursive_insert(data)
+    #         else:
+    #             self.root.left = Node(data)
 
 
 
@@ -131,8 +147,9 @@ if __name__ == '__main__':
     bst1.insert(5)
     bst1.insert(13)
     bst1.insert(11)
+    bst1.insert(12)
     bst1.insert(2)
-    bst1.insert(2)
+    # bst1.insert(2)
 
     inorder(bst1.root)
     print('\n')
@@ -146,10 +163,15 @@ if __name__ == '__main__':
 
     bst2 = BST()
 
-    bst2.recursive_insert(10)
-    bst2.recursive_insert(5)
-    bst2.recursive_insert(13)
+    bst2.insert(10)
+    bst2.insert(5)
+    bst2.insert(13)
+    bst2.insert(14)
 
     inorder(bst2.root)
+
+    print('\n')
+
+    print(height(bst2.root))
 
 
