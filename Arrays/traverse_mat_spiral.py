@@ -1,6 +1,5 @@
 
 
-
 def printData(arr,top , bottom, left , right):
 
 
@@ -34,14 +33,6 @@ def printData(arr,top , bottom, left , right):
     printData(arr,top , bottom , left, right)
 
 
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     a = [[1, 2, 3, 4, 5, 6],
          [7, 8, 9, 10, 11, 12],
@@ -49,8 +40,8 @@ if __name__ == '__main__':
 
 
     top  = 0
-    bottom = len(a) -1
-    left  = 0
-    right = len(a[0]) -1
+    bottom = len(a) - 1
+    left = 0
+    right = len(a[0]) - 1
 
     printData(a,top , bottom,left , right)

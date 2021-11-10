@@ -1,9 +1,116 @@
+from collections import deque
+
 class Node :
     def __init__(self,data):
         self.data = data
         self.left = None
         self.right = None
 
+def swap()
+
+
+def lca1(p,q,root):
+
+    if root is None:
+        return None
+
+    while root:
+        if p > root.data and q  > root.data :
+            root = root.right
+        elif p < root.data and q <root.data:
+            root = root.left
+        else :
+            break
+
+    return  root
+
+
+
+def lca(p,q,root):
+
+    if root is None:
+        return None
+
+    if root.data == p or root.data == q:
+        return root
+
+    left = lca(p,q,root.left)
+    right = lca(p,q,root.right)
+
+    if left is not None and right is not None:
+        return root
+
+    if left is not None:
+        return left
+    else :
+        return right
+
+
+
+
+
+
+
+def vertical_order(root):
+    if root is not None:
+        dict = {}
+        node_dict = {}
+        que = list()
+        que.append(root)
+        node_dict[root.data] = 0
+        while len(que) > 0:
+            temp = []
+            curr = que.pop(0)
+            if curr is not None:
+                level = node_dict[curr.data]
+                if level in dict:
+                    temp = dict.get(level)
+                    temp.append(curr.data)
+                else:
+                    temp.append(curr.data)
+                    dict[level] = temp
+
+                if curr.left is not None:
+                    left_node = curr.left
+                    que.append(left_node)
+                    node_dict[left_node.data] = node_dict[curr.data] - 1
+                if curr.right is not None:
+                    right_node = curr.right
+                    que.append(right_node)
+                    node_dict[right_node.data] = node_dict[curr.data] + 1
+        print(dict)
+
+
+def verticalOrder_1(root):
+
+    if root is None:
+        return
+
+    d = {}
+    q = deque()
+
+    q.append((root,0))
+
+    # print(q)
+
+    while len(q) > 0:
+
+        node,dist = q.popleft()
+        d.setdefault(dist,[]).append(node.data)
+
+        if node.left:
+            q.append((node.left, dist -1))
+
+        if node.right:
+            q.append((node.right, dist + 1))
+
+    #print vertical order
+    # for i in sorted(d.items()):
+    #     print(i)
+
+    #print top view
+    for i in sorted(d.keys()):
+        print(d[i][0])
 
 def height(root):
 
@@ -21,7 +128,7 @@ def height(root):
 
 def inorder(root):
 
-    if  root is None:
+    if root is None:
         return None
 
     if  root:
@@ -174,4 +281,36 @@ if __name__ == '__main__':
 
     print(height(bst2.root))
 
+    print('\n')
 
+    verticalOrder_1(bst1.root)
+
+    print(lca(5,13,bst2.root))
+
+    print('\n')
+
+    print('lca new method')
+
+    bst3 = BST()
+
+    bst3.insert(20)
+    bst3.insert(8)
+    bst3.insert(22)
+    bst3.insert(4)
+    bst3.insert(12)
+    bst3.insert(10)
+    bst3.insert(14)
+
+    print("preorder bst3")
+
+    preorder(bst3.root)
+
+    print('\n', 'inorder')
+
+    inorder(bst3.root)
+
+    print('\n')
+
+    returnd_root  = lca1(10,22,bst3.root)
+
+    print(returnd_root.data)
