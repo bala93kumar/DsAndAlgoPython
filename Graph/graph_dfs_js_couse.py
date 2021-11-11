@@ -30,34 +30,25 @@ class Graph:
                 if i  == vertex:
                     self.adjacentList[key].remove(i)
 
-        # for key, value in self.adjacentList.items():
-        #     for x in self.adjacentList[vertex]:
-        #         if x == vertex:
-        #             self.adjacentList[key].remove(x)
-
-
 
 if __name__ == '__main__':
 
     g = Graph()
-    g.addVertex(1)
-    g.addVertex(2)
-    g.addVertex(1)
-    g.addVertex(3)
-    print("the graph is")
-    print(g.adjacentList)
 
-    g.addEdge(1,2)
-    g.addEdge(1,3)
+    g.addVertex('A')
+    g.addVertex('B')
+    g.addVertex('C')
+    g.addVertex('D')
+    g.addVertex('E')
+    g.addVertex('F')
 
-    print(g.adjacentList)
-
-    # g.removeEdge(1,2)
-    g.removeEdge(1,3)
-
-    print("after removing edges")
-    print(g.adjacentList)
-
-    g.removeVertex(2)
+    g.addEdge('A','B')
+    g.addEdge("A",'C')
+    g.addEdge("B","D")
+    g.addEdge("C","E")
+    g.addEdge("D","E")
+    g.addEdge("D","F")
+    g.addEdge("E","F")
 
     print(g.adjacentList)
+
